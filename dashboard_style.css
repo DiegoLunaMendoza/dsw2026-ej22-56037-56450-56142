@@ -7,15 +7,19 @@
     "main"
     "footer";
   height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .dashboard-container nav {
   position: absolute;
-  top: 0;
+  top: 50px;
   bottom: 0;
   width: 200px;
   background-color: #f4f4f4;
   left: -200px;
+  z-index: 2;
+  overflow: hidden; 
 }
 
 .dashboard-container nav ul {
@@ -27,6 +31,12 @@
 .dashboard-container nav ul li {
   padding: 1rem;
   border-bottom: 1px solid #ddd;
+}
+
+.dashboard-container nav ul li a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #17375e;
 }
 
 .dashboard-container header {
@@ -58,6 +68,25 @@
   color: white;
   text-align: center;
   padding: 1rem;
+}
+
+.dashboard-container nav.open {
+  left: 0;
+}
+
+.backdrop {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.backdrop.visible {
+  display: block;
 }
 
 @media screen and (min-width: 600px) {
