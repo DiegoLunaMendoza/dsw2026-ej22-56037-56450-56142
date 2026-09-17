@@ -60,6 +60,39 @@
   padding: 1rem;
 }
 
+.buttons-add{
+  display: flex;
+  flex-direction: row;
+}
+
+#add-doctor, #add-speciality{
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.icon-dashboard-button{
+  height: 20px;
+}
+
+.cards-status{
+  margin: 20px 0;
+}
+
+.top-card{
+  display: flex;
+  justify-content: space-between;
+}
+
+#card-doctors{
+  width: 250px;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 @media screen and (min-width: 600px) {
   .dashboard-container {
     grid-template-columns: 200px 1fr;
