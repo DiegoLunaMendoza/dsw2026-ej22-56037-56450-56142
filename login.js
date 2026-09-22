@@ -15,4 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Usuario o contraseña incorrectos');
         }
     });
+
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const isHidden = passwordInput.type === 'password';
+
+        passwordInput.type = isHidden ? 'text' : 'password';
+        togglePassword.src = isHidden ? 'icons/eye-slash.svg' : 'icons/eye.svg';
+        togglePassword.alt = isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña';
+    });
 });
