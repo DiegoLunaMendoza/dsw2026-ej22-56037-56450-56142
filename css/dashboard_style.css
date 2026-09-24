@@ -317,6 +317,15 @@
 
 /* Tabla de doctores */
 
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: white;
+    border-bottom: 1px solid #999fa6;
+}
+
 #table-section .table-header h2{
     color: #0e2542;
 }
@@ -324,6 +333,7 @@
 #table-section{
     border: 1px solid #999fa6;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #search{
@@ -335,36 +345,20 @@
 }
 
 #search-doctor{
-    height: 100%;
     border: none;
     background-color: transparent;
-    height: 100%;
     padding: 0 5px;
 }
 
 #icon-search-svg {
     height: 25px;
     fill: currentColor;
-    text-align: center;
-    text-justify: center;
     margin: 4px;
-}
-
-.table-header{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 15px 10px 15px;
-    background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom: 1px solid #999fa6;
 }
 
 #doctors-table{
     width: 100%;
     background-color: white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     border-spacing: 0;
 }
 
@@ -372,12 +366,51 @@
     background-color: #f2efff;
 }
 
-.tr-doctors{
+#doctors-table th , #doctors-table td {
     padding: 10px 15px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    text-align: left;
+    vertical-align: middle;
 }
+
+#doctors-table th:last-child,
+#doctors-table td:last-child {
+    text-align: right;
+}
+
+.tr-doctors .td-name div{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.doctor-pic {
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.doctor-name {
+    font-weight: bold;
+}
+
+.doctor-status-active {
+    width: 100px;
+    padding: 5px;
+    background-color: #b2e9c3;
+    border-radius: 10%;
+    text-align: center;
+    color: #036306;
+}
+
+.doctor-status-license {
+    width: 100px;
+    padding: 5px;
+    background-color: #fff490;
+    border-radius: 10%;
+    text-align: center;
+    color: #635903;
+}
+
 
 /* ESCRITORIO */
 
