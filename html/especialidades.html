@@ -7,7 +7,9 @@
   <title>Listado de Productos</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dashboard_style.css">
+  <link rel="stylesheet" href="../css/especialidades_style.css">
   <script src="../js/dashboard.js"></script>
+  <script src="../js/especialidades.js" defer></script>
 </head>
 
 <body>
@@ -18,8 +20,8 @@
         <p>Healthcare Management</p>
         <nav>
           <ul>
-            <li class="li-active">
-              <a href="#">
+            <li>
+              <a href="dashboard.html">
                 <svg class="icon-aside-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M60 0H180A60 60 0 0 1 240 60V220A60 60 0 0 1 180 280H60A60 60 0 0 1 0 220V60A60 60 0 0 1 60 0ZM60 40A20 20 0 0 0 40 60V220A20 20 0 0 0 60 240H180A20 20 0 0 0 200 220V60A20 20 0 0 0 180 40ZM332 0H452A60 60 0 0 1 512 60V140A60 60 0 0 1 452 200H332A60 60 0 0 1 272 140V60A60 60 0 0 1 332 0ZM332 40A20 20 0 0 0 312 60V140A20 20 0 0 0 332 160H452A20 20 0 0 0 472 140V60A20 20 0 0 0 452 40ZM60 312H180A60 60 0 0 1 240 372V452A60 60 0 0 1 180 512H60A60 60 0 0 1 0 452V372A60 60 0 0 1 60 312ZM60 352A20 20 0 0 0 40 372V452A20 20 0 0 0 60 472H180A20 20 0 0 0 200 452V372A20 20 0 0 0 180 352ZM332 232H452A60 60 0 0 1 512 292V452A60 60 0 0 1 452 512H332A60 60 0 0 1 272 452V292A60 60 0 0 1 332 232ZM332 272A20 20 0 0 0 312 292V452A20 20 0 0 0 332 472H452A20 20 0 0 0 472 452V292A20 20 0 0 0 452 272Z" />
@@ -37,8 +39,8 @@
                 Doctores
               </a>
             </li>
-            <li>
-              <a href="especialidades.html">
+            <li  class="li-active">
+              <a href="#">
                 <svg class="icon-aside-svg" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                   <path
@@ -89,129 +91,164 @@
     <header id="principal-header">
       <button class="menu">&#9776;</button>
     </header>
-    <main>
-      <h1 id="dashboard-title">Vista General de Gestión</h1>
-      <p id="dashboard-description">Configure el personal médico y las especialidades del departamento.</p>
-      <div class="buttons-add">
-        <button id="add-doctor">
-          <svg class="icon-dashboard-button" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-            <path
-              d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
-          </svg>
-          Agregar nuevo doctor
-        </button>
-        <button id="add-speciality">
-          <svg class="icon-dashboard-button" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-            <path
-              d="M320 64C331.2 64 341.7 69.9 347.4 79.5L443.4 239.5C449.3 249.4 449.5 261.7 443.8 271.7C438.1 281.7 427.5 288 416 288L224 288C212.5 288 201.8 281.8 196.2 271.8C190.6 261.8 190.7 249.5 196.6 239.6L292.6 79.6C298.3 69.9 308.8 64 320 64zM192 336C253.9 336 304 386.1 304 448C304 509.9 253.9 560 192 560C130.1 560 80 509.9 80 448C80 386.1 130.1 336 192 336zM392 352L504 352C526.1 352 544 369.9 544 392L544 504C544 526.1 526.1 544 504 544L392 544C369.9 544 352 526.1 352 504L352 392C352 369.9 369.9 352 392 352z" />
-          </svg>
-          Agregar nueva especialidad
-        </button>
+<main>
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Directorio de Especialidades</h1>
+          <p class="page-description">Administre las categorías médicas, servicios y disponibilidad del personal especializado.</p>
+        </div>
+        <!-- buscador -->
+        <a href="crear-especialidad.html" class="btn-primary">
+          <svg class="icon-dashboard-button" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. --><path d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"/></svg>
+          Nueva Especialidad
+        </a>
+      </div>
+      <div class="table-wrapper">
+        <table class="specialities-table">
+          <thead>
+            <tr>
+              <th scope="col">Nombre de la Especialidad</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="specialities-body">
+            <tr data-id="1">
+              <td>
+                <div class="speciality-name">
+                  <div class="speciality-icon">
+                    <img src="../icons/cardiology.svg" alt="" class="speciality-icon-img">
+                  </div>
+                  <span>Cardiología</span>
+                </div>
+              </td>
+              <td>Estudio y tratamiento de trastornos del corazón y del sistema circulatorio.</td>
+              <td><span class="badge badge-active">Activa</span></td>
+              <td>
+                <div class="actions">
+                  <button type="button" class="btn-edit" aria-label="Editar Cardiología">
+                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
+                  </button>
+                  <button type="button" class="btn-delete" aria-label="Eliminar Cardiología">
+                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="2">
+              <td>
+                <div class="speciality-name">
+                  <div class="speciality-icon">
+                    <img src="../icons/neurology.svg" alt="" class="speciality-icon-img">
+                  </div>
+                  <span>Neurología</span>
+                </div>
+              </td>
+              <td>Diagnóstico y tratamiento de todas las categorías de afecciones cerebrales.</td>
+              <td><span class="badge badge-active">Activa</span></td>
+              <td>
+                <div class="actions">
+                  <button type="button" class="btn-edit" aria-label="Editar Neurología">
+                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
+                  </button>
+                  <button type="button" class="btn-delete" aria-label="Eliminar Neurología">
+                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="3">
+              <td>
+                <div class="speciality-name">
+                  <div class="speciality-icon">
+                    <img src="../icons/dermatology.svg" alt="" class="speciality-icon-img">
+                  </div>
+                  <span>Dermatología</span>
+                </div>
+              </td>
+              <td>Atención integral de enfermedades de la piel, uñas y cabello.</td>
+              <td><span class="badge badge-inactive">Inactiva</span></td>
+              <td>
+                <div class="actions">
+                  <button type="button" class="btn-edit" aria-label="Editar Dermatología">
+                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
+                  </button>
+                  <button type="button" class="btn-delete" aria-label="Eliminar Dermatología">
+                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="4">
+              <td>
+                <div class="speciality-name">
+                  <div class="speciality-icon">
+                    <img src="../icons/pediatrics.svg" alt="" class="speciality-icon-img">
+                  </div>
+                  <span>Pediatría</span>
+                </div>
+              </td>
+              <td>Cuidado médico de lactantes, niños y adolescentes.</td>
+              <td><span class="badge badge-active">Activa</span></td>
+              <td>
+                <div class="actions">
+                  <button type="button" class="btn-edit" aria-label="Editar Pediatría">
+                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
+                  </button>
+                  <button type="button" class="btn-delete" aria-label="Eliminar Pediatría">
+                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="cards-container">
-        <div class="card-status">
+        <div class="card-status card-accent">
           <div class="top-card">
-            <div class="icon-card">
-              <svg class="icon-card-svg" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                <path
-                  d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM288 280C288 271.2 295.2 264 304 264L336 264C344.8 264 352 271.2 352 280L352 320L392 320C400.8 320 408 327.2 408 336L408 368C408 376.8 400.8 384 392 384L352 384L352 424C352 432.8 344.8 440 336 440L304 440C295.2 440 288 432.8 288 424L288 384L248 384C239.2 384 232 376.8 232 368L232 336C232 327.2 239.2 320 248 320L288 320L288 280z" />
-              </svg>
+            <div>
+              <p class="card-label">TOTAL ESPECIALIDADES</p>
+              <p class="card-value">24</p>
             </div>
-            <div class="variant-status">+4 este mes</div>
+            <div class="icon-card">
+              <img src="../icons/format_list_bulleted.svg" alt="" class="icon-card-img">
+            </div>
           </div>
-          <div class="bottom-card">
-            <p>Doctores activos</p>
-            <p id="number-active-doctors">124</p>
-          </div>
+          <p class="card-footer card-footer-trend">
+            <img src="../icons/trending_up.svg" alt="" class="trend-icon-img">
+            +2 este trimestre
+          </p>
         </div>
-        <div class="card-status">
+        <div class="card-status card-accent">
           <div class="top-card">
-            <div class="icon-card">
-              <svg class="icon-card-svg" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                <path
-                  d="M480 160L352 160L352 288L480 288L480 160zM544 288L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 160C96 124.7 124.7 96 160 96L480 96C515.3 96 544 124.7 544 160L544 288zM160 352L160 480L288 480L288 352L160 352zM288 288L288 160L160 160L160 288L288 288zM352 352L352 480L480 480L480 352L352 352z" />
-              </svg>
+            <div>
+              <p class="card-label">MÁS DEMANDADA</p>
+              <p class="card-value">Cardiología</p>
             </div>
-            <div class="variant-status">+4 este mes</div>
+            <div class="icon-card">
+              <img src="../icons/favorite.svg" alt="" class="icon-card-img">
+            </div>
           </div>
-          <div class="bottom-card">
-            <p>Especialidades activas</p>
-            <p id="number-active-specialities">32</p>
-          </div>
+          <p class="card-footer">15% incremento en citas</p>
         </div>
-        <div class="card-status">
+        <div class="card-status card-accent card-accent-teal">
           <div class="top-card">
-            <div class="icon-card">
-              <svg class="icon-card-svg" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
-                <path
-                  d="M416 64C433.7 64 448 78.3 448 96L448 128L480 128C515.3 128 544 156.7 544 192L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 192C96 156.7 124.7 128 160 128L192 128L192 96C192 78.3 206.3 64 224 64C241.7 64 256 78.3 256 96L256 128L384 128L384 96C384 78.3 398.3 64 416 64zM438 225.7C427.3 217.9 412.3 220.3 404.5 231L285.1 395.2L233 343.1C223.6 333.7 208.4 333.7 199.1 343.1C189.8 352.5 189.7 367.7 199.1 377L271.1 449C276.1 454 283 456.5 289.9 456C296.8 455.5 303.3 451.9 307.4 446.2L443.3 259.2C451.1 248.5 448.7 233.5 438 225.7z" />
-              </svg>
+            <div>
+              <p class="card-label">NUEVAS ESTE MES</p>
+              <p class="card-value">03</p>
             </div>
-            <div class="variant-status">+4 este mes</div>
+            <div class="icon-card">
+              <img src="../icons/verified.svg" alt="" class="icon-card-img">
+            </div>
           </div>
-          <div class="bottom-card">
-            <p>Turnos confirmados para hoy</p>
-            <p id="number-confirmed-appointments">48</p>
-          </div>
+          <p class="card-footer card-footer-strong">Psicología, Nutrición...</p>
         </div>
       </div>
-
-      <section id="table-section">
-        <header class="table-header">
-          <h2>Directorio de Profesionales Médicos</h2>
-          <div id="search">
-            <span class="search-icon">
-              <svg id="icon-search-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5 192.5 416 272 416z"/></svg>             
-            </span>
-            <input type="search" placeholder="Buscar médico" id="search-doctor">
-          </div>
-        </header>
-        <table id="doctors-table">
-        <thead id="doctors-table-head">
-          <tr class="tr-doctors">
-            <th>Nombre del Doctor</th>
-            <th>Especialidad</th>
-            <th>Estado de Disponibilidad</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="doctors-table-body">
-         <tr class="tr-doctors">
-            <td class="td-name">
-              <div>
-                <img src="../img/Javier-Milei-Perfil-TW.jpeg" alt="" class="doctor-pic">
-                <p class="doctor-name">Dr. Xavier Milevechian</p>
-              </div>
-            </td>
-            <td>Gastroenterologo</td>
-            <td>
-              <div class="doctor-status-active">&bull; Activo</div>
-            </td>
-            <td></td>
-         </tr>
-          <tr class="tr-doctors">
-            <td class="td-name">
-              <div>
-                <img src="../img/Javier-Milei-Perfil-TW.jpeg" alt="" class="doctor-pic">
-                <p class="doctor-name">Dr. Javierius Mileinsky</p>
-              </div>
-            </td>
-            <td>Ginecólogo</td>
-            <td>
-              <div class="doctor-status-license">&bull; Licencia</div>
-            </td>
-            <td></td>
-         </tr>
-        </tbody>
-      </table>
-      </section>
-      
+        <img src="../img/pasillo-hospital.jpg" alt="" class="page-banner">
     </main>
+ 
   </div>
 </body>
 
