@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/dashboard_style.css">
   <link rel="stylesheet" href="../css/especialidades_style.css">
   <script src="../js/dashboard.js"></script>
+  <script src="../js/especialidades.js" defer></script>
 </head>
 
 <body>
@@ -113,7 +114,7 @@
             </tr>
           </thead>
           <tbody id="specialities-body">
-            <tr>
+            <tr data-id="1">
               <td>
                 <div class="speciality-name">
                   <div class="speciality-icon">
@@ -122,12 +123,12 @@
                   <span>Cardiología</span>
                 </div>
               </td>
-              <td>Diagnóstico y tratamiento integral de afecciones cardíacas y del sistema circulatorio.</td>
+              <td>Estudio y tratamiento de trastornos del corazón y del sistema circulatorio.</td>
               <td><span class="badge badge-active">Activa</span></td>
               <td>
                 <div class="actions">
                   <button type="button" class="btn-edit" aria-label="Editar Cardiología">
-                       <img src="../icons/edit.svg" alt="" class="action-icon-img">
+                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
                   </button>
                   <button type="button" class="btn-delete" aria-label="Eliminar Cardiología">
                     <img src="../icons/delete.svg" alt="" class="action-icon-img">
@@ -135,7 +136,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr data-id="2">
               <td>
                 <div class="speciality-name">
                   <div class="speciality-icon">
@@ -144,7 +145,7 @@
                   <span>Neurología</span>
                 </div>
               </td>
-              <td>Prevención, diagnóstico y tratamiento de trastornos del sistema nervioso central y periférico.</td>
+              <td>Diagnóstico y tratamiento de todas las categorías de afecciones cerebrales.</td>
               <td><span class="badge badge-active">Activa</span></td>
               <td>
                 <div class="actions">
@@ -157,7 +158,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr data-id="3">
               <td>
                 <div class="speciality-name">
                   <div class="speciality-icon">
@@ -179,7 +180,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr data-id="4">
               <td>
                 <div class="speciality-name">
                   <div class="speciality-icon">
@@ -188,7 +189,7 @@
                   <span>Pediatría</span>
                 </div>
               </td>
-              <td>Atención médica preventiva y asistencial para recién nacidos, niños y adolescentes.</td>
+              <td>Cuidado médico de lactantes, niños y adolescentes.</td>
               <td><span class="badge badge-active">Activa</span></td>
               <td>
                 <div class="actions">
@@ -245,6 +246,7 @@
           <p class="card-footer card-footer-strong">Psicología, Nutrición...</p>
         </div>
       </div>
+        <img src="../img/pasillo-hospital.jpg" alt="" class="page-banner">
     </main>
  
   </div>

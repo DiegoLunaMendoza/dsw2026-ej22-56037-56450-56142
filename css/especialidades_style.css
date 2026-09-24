@@ -215,3 +215,18 @@
     font-weight: bold;
     color: #0e2542;
 }
+
+/* Imagen del pasillo de hospital */
+
+.page-banner {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    margin-top: 30px;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0.25;
+    filter: grayscale(100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
