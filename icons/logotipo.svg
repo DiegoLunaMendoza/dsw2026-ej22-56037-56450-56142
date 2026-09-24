@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Arco verde exterior/inferior -->
+  <path d="M 50 15 A 35 35 0 0 0 15 50 A 35 35 0 0 0 50 85 A 35 35 0 0 0 74 76 A 38 38 0 0 1 50 81 A 31 31 0 0 1 19 50 A 31 31 0 0 1 50 19 A 38 38 0 0 1 74 24 A 35 35 0 0 0 50 15 Z" fill="#2e9e2b"/>
+  <!-- Arco azul exterior/derecho -->
+  <path d="M 50 8 A 42 42 0 0 1 92 50 A 42 42 0 0 1 50 92 A 42 42 0 0 1 28 85 A 45 45 0 0 0 50 96 A 46 46 0 0 0 96 50 A 46 46 0 0 0 50 4 A 45 45 0 0 0 28 15 A 42 42 0 0 1 50 8 Z" fill="#0284c7"/>
+  <!-- Cruz médica central -->
+  <path d="M 43 27 H 57 V 43 H 73 V 57 H 57 V 73 H 43 V 57 H 27 V 43 H 43 Z" fill="#2fa829"/>
+</svg>
