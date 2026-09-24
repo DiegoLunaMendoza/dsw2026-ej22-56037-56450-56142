@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const isHidden = passwordInput.type === 'password';
 
         passwordInput.type = isHidden ? 'text' : 'password';
-        togglePassword.src = isHidden ? 'icons/eye-slash.svg' : 'icons/eye.svg';
+        togglePassword.src = isHidden ? '../icons/eye-slash.svg' : '../icons/eye.svg';
         togglePassword.alt = isHidden ? 'Ocultar contraseña' : 'Mostrar contraseña';
     });
 });

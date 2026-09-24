@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio de Sesion</title>
-  <link rel="stylesheet" href="/dsw2026-ej22-56037-56450-56142/css/style.css">
-  <link rel="stylesheet" href="/dsw2026-ej22-56037-56450-56142/css/login_style.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/login_style.css">
 
-  <script src="/dsw2026-ej22-56037-56450-56142/js/login.js"></script>
+  <script src="../js/login.js"></script>
 </head>
 <body class="login-body">
   <main class="main-container">
-    <img src="icons/shield-plus.svg" alt="Logo de MedPortal" class="portal-logo">
+    <img src="../icons/shield-plus.svg" alt="Logo de MedPortal" class="portal-logo">
     <h1 class="portal-title">MedPortal</h1>
 
     <div class="card">
-      <form action="dashboard.html" method="POST" class="login-form">
+      <form action="../html/dashboard.html" method="POST" class="login-form">
 
         <div class="header-block">
           <h2 class="subtitle">Bienvenido de nuevo</h2>
@@ -25,7 +25,7 @@
         <div class="form-group">
           <label for="username" class="form-label">Usuario</label>
           <div class="input-wrapper">
-            <img src="icons/person-circle.svg" alt="Icono de usuario" class="field-icon">
+            <img src="../icons/person-circle.svg" alt="Icono de usuario" class="field-icon">
             <input class="input-field" type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
           </div>
         </div>
@@ -33,20 +33,20 @@
         <div class="form-group">
           <label for="password" class="form-label">Contraseña</label>
           <div class="input-wrapper">
-            <img src="icons/lock.svg" alt="Icono de contraseña" class="field-icon">
+            <img src="../icons/lock.svg" alt="Icono de contraseña" class="field-icon">
             <input class="input-field" type="password" id="password" name="password" placeholder="••••••••" required>
-            <img src="icons/eye.svg" alt="Mostrar contraseña" class="toggle-password-icon" id="togglePassword">
+            <img src="../icons/eye.svg" alt="Mostrar contraseña" class="toggle-password-icon" id="togglePassword">
           </div>
         </div>
 
         <button type="submit" class="btn-submit">
-          Iniciar Sesión <img src="icons/box-arrow-in-right.svg" alt="" class="btn-icon">
+          Iniciar Sesión <img src="../icons/box-arrow-in-right.svg" alt="" class="btn-icon">
         </button>
 
       </form>
 
       <div class="security-notice">
-        <img src="icons/shield-check.svg" alt="Icono de seguridad" class="shield-icon">
+        <img src="../icons/shield-check.svg" alt="Icono de seguridad" class="shield-icon">
         <p class="security-text">
           <strong>Solo Acceso Seguro:</strong> Este sistema es para personal autorizado. Los intentos de acceso no autorizados son registrados y monitoreados para su cumplimiento.
         </p>
