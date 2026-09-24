@@ -12,7 +12,7 @@
 
 /* Header */
 
-.dashboard-container header {
+.dashboard-container #principal-header {
     display: flex;
     align-items: center;
     padding: 0 15px;
@@ -264,7 +264,7 @@
     width: 100%;
     border: 1px solid #999fa6;
     padding: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
 }
 
@@ -305,6 +305,7 @@
 
 .bottom-card>p {
     font-size: 15px;
+    color: #0e2542
 }
 
 #number-active-doctors,
@@ -313,6 +314,103 @@
     font-size: 35px;
     font-weight: bold;
 }
+
+/* Tabla de doctores */
+
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: white;
+    border-bottom: 1px solid #999fa6;
+}
+
+#table-section .table-header h2{
+    color: #0e2542;
+}
+
+#table-section{
+    border: 1px solid #999fa6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#search{
+    border: 1px solid #999fa6;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+#search-doctor{
+    border: none;
+    background-color: transparent;
+    padding: 0 5px;
+}
+
+#icon-search-svg {
+    height: 25px;
+    fill: currentColor;
+    margin: 4px;
+}
+
+#doctors-table{
+    width: 100%;
+    background-color: white;
+    border-spacing: 0;
+}
+
+#doctors-table thead{
+    background-color: #f2efff;
+}
+
+#doctors-table th , #doctors-table td {
+    padding: 10px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#doctors-table th:last-child,
+#doctors-table td:last-child {
+    text-align: right;
+}
+
+.tr-doctors .td-name div{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.doctor-pic {
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.doctor-name {
+    font-weight: bold;
+}
+
+.doctor-status-active {
+    width: 100px;
+    padding: 5px;
+    background-color: #b2e9c3;
+    border-radius: 10%;
+    text-align: center;
+    color: #036306;
+}
+
+.doctor-status-license {
+    width: 100px;
+    padding: 5px;
+    background-color: #fff490;
+    border-radius: 10%;
+    text-align: center;
+    color: #635903;
+}
+
 
 /* ESCRITORIO */
 
@@ -323,7 +421,7 @@
         grid-template-areas: "aside main";
     }
 
-    .dashboard-container header {
+    .dashboard-container #principal-header {
         display: none;
     }
 
@@ -348,7 +446,7 @@
 
     .dashboard-container main {
         grid-area: main;
-        padding: 15px 30px;
+        padding: 15px 350px 15px 30px;
     }
 
     #dashboard-title {
@@ -372,10 +470,14 @@
 
     .cards-container {
         flex-direction: row;
+        justify-content: space-between;
         gap: 30px;
     }
 
     .card-status {
-        width: 250px;
+        width: 300px;
     }
+
+
+
 }
