@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/specialties.css">
   <script src="../js/dashboard.js"></script>
+  <script src="../js/specialtiesStorage.js" defer></script>
   <script src="../js/specialties.js" defer></script>
   <!-- Línea para cambiar el logo de la pestaña -->
   <link rel="icon" type="image/png" href="../icons/logotipo.svg">
@@ -116,94 +117,7 @@
             </tr>
           </thead>
           <tbody id="specialities-body">
-            <tr data-id="1">
-              <td>
-                <div class="speciality-name">
-                  <div class="speciality-icon">
-                    <img src="../icons/cardiology.svg" alt="" class="speciality-icon-img">
-                  </div>
-                  <span>Cardiología</span>
-                </div>
-              </td>
-              <td>Estudio y tratamiento de trastornos del corazón y del sistema circulatorio.</td>
-              <td><span class="badge badge-active">Activa</span></td>
-              <td>
-                <div class="actions">
-                  <button type="button" class="btn-edit" aria-label="Editar Cardiología">
-                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
-                  </button>
-                  <button type="button" class="btn-delete" aria-label="Eliminar Cardiología">
-                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr data-id="2">
-              <td>
-                <div class="speciality-name">
-                  <div class="speciality-icon">
-                    <img src="../icons/neurology.svg" alt="" class="speciality-icon-img">
-                  </div>
-                  <span>Neurología</span>
-                </div>
-              </td>
-              <td>Diagnóstico y tratamiento de todas las categorías de afecciones cerebrales.</td>
-              <td><span class="badge badge-active">Activa</span></td>
-              <td>
-                <div class="actions">
-                  <button type="button" class="btn-edit" aria-label="Editar Neurología">
-                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
-                  </button>
-                  <button type="button" class="btn-delete" aria-label="Eliminar Neurología">
-                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr data-id="3">
-              <td>
-                <div class="speciality-name">
-                  <div class="speciality-icon">
-                    <img src="../icons/dermatology.svg" alt="" class="speciality-icon-img">
-                  </div>
-                  <span>Dermatología</span>
-                </div>
-              </td>
-              <td>Atención integral de enfermedades de la piel, uñas y cabello.</td>
-              <td><span class="badge badge-inactive">Inactiva</span></td>
-              <td>
-                <div class="actions">
-                  <button type="button" class="btn-edit" aria-label="Editar Dermatología">
-                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
-                  </button>
-                  <button type="button" class="btn-delete" aria-label="Eliminar Dermatología">
-                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
-                  </button>
-                </div>
-              </td>
-            </tr>
-            <tr data-id="4">
-              <td>
-                <div class="speciality-name">
-                  <div class="speciality-icon">
-                    <img src="../icons/pediatrics.svg" alt="" class="speciality-icon-img">
-                  </div>
-                  <span>Pediatría</span>
-                </div>
-              </td>
-              <td>Cuidado médico de lactantes, niños y adolescentes.</td>
-              <td><span class="badge badge-active">Activa</span></td>
-              <td>
-                <div class="actions">
-                  <button type="button" class="btn-edit" aria-label="Editar Pediatría">
-                    <img src="../icons/edit.svg" alt="" class="action-icon-img">
-                  </button>
-                  <button type="button" class="btn-delete" aria-label="Eliminar Pediatría">
-                    <img src="../icons/delete.svg" alt="" class="action-icon-img">
-                  </button>
-                </div>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
@@ -212,7 +126,7 @@
           <div class="top-card">
             <div>
               <p class="card-label">TOTAL ESPECIALIDADES</p>
-              <p class="card-value">24</p>
+              <p class="card-value" id="total-especialidades">0</p>
             </div>
             <div class="icon-card">
               <img src="../icons/format_list_bulleted.svg" alt="" class="icon-card-img">
