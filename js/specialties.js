@@ -79,15 +79,17 @@ function deleteSpeciality(row) {
   const especialidad = especialidades.find((esp) => esp.id === id);
 
   if (especialidad.estado === "inactivo") {
-    alert(`La especialidad ${especialidad.nombre} ya está inactiva.`);
+    mostrarToast(`La especialidad ${especialidad.nombre} ya está inactiva`, "warning");
     return;
   }
 
-  const confirmed = confirm(`¿Está seguro que desea eliminar la especialidad ${especialidad.nombre}?`);
+  const confirmed = confirm(`¿Está seguro que desea poner inactiva la especialidad ${especialidad.nombre}?`);
   if (!confirmed) return;
 
   // Baja lógica: no se borra del array, se cambia el estado a inactivo y se guarda
   especialidad.estado = "inactivo";
   guardarEspecialidades(especialidades);
   renderizarEspecialidades();
+
+  mostrarToast(`La especialidad ${especialidad.nombre} ha sido puesta inactiva correctamente`, "warning");
 }
