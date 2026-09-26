@@ -73,15 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         autoAjustar();
     });
 
-    const toast = document.getElementById("toast");
-    let toastTimeout;
-    function mostrarToast(mensaje) {
-        toast.textContent = mensaje;
-        toast.classList.add("visible");
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toast.classList.remove("visible"), 2500);
-    }
-
     btnCancelar.addEventListener("click", () => {
         window.location.href = "specialties.html";
     });
