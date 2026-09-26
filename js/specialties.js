@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("specialities-body");
 
-  // Hacemos un listado de las especialidades en la tabla y le damos un id 
+  // Al cargar la página, completamos la tabla desde localStorage
+  renderizarEspecialidades();
+
+  // Delegación de eventos: un solo listener para los botones de todas las filas,
+  // incluso las que se crean dinámicamente
   tableBody.addEventListener("click", (e) => {
     const editButton = e.target.closest(".btn-edit");
     const deleteButton = e.target.closest(".btn-delete");
@@ -18,8 +22,50 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function getSpecialityName(row) {
-  return row.querySelector(".speciality-name span").textContent;
+// Dibuja todas las filas de la tabla a partir del array guardado en localStorage
+function renderizarEspecialidades() {
+  const especialidades = obtenerEspecialidades();
+  const tableBody = document.getElementById("specialities-body");
+
+  tableBody.innerHTML = "";
+
+  especialidades.forEach((especialidad) => {
+    const activa = especialidad.estado === "activo";
+    const icono = especialidad.icono || "briefcase-medical-solid-full.svg";
+
+    const fila = document.createElement("tr");
+    fila.dataset.id = especialidad.id;
+    fila.innerHTML = `
+      <td>
+        <div class="speciality-name">
+          <div class="speciality-icon">
+            <img src="../icons/${icono}" alt="" class="speciality-icon-img">
+          </div>
+          <span>${especialidad.nombre}</span>
+        </div>
+      </td>
+      <td>${especialidad.descripcion}</td>
+      <td>
+        <span class="badge ${activa ? "badge-active" : "badge-inactive"}">
+          ${activa ? "Activa" : "Inactiva"}
+        </span>
+      </td>
+      <td>
+        <div class="actions">
+          <button type="button" class="btn-edit" aria-label="Editar ${especialidad.nombre}">
+            <img src="../icons/edit.svg" alt="" class="action-icon-img">
+          </button>
+          <button type="button" class="btn-delete" aria-label="Eliminar ${especialidad.nombre}">
+            <img src="../icons/delete.svg" alt="" class="action-icon-img">
+          </button>
+        </div>
+      </td>
+    `;
+    tableBody.appendChild(fila);
+  });
+
+  // Actualizamos la tarjeta de total con la cantidad real
+  document.getElementById("total-especialidades").textContent = especialidades.length;
 }
 
 function editSpeciality(row) {
@@ -28,19 +74,20 @@ function editSpeciality(row) {
 }
 
 function deleteSpeciality(row) {
-  const name = getSpecialityName(row);
-  const badge = row.querySelector(".badge");
+  const id = Number(row.dataset.id);
+  const especialidades = obtenerEspecialidades();
+  const especialidad = especialidades.find((esp) => esp.id === id);
 
-  if (badge.classList.contains("badge-inactive")) {
-    alert(`La especialidad ${name} ya está inactiva.`);
+  if (especialidad.estado === "inactivo") {
+    alert(`La especialidad ${especialidad.nombre} ya está inactiva.`);
     return;
   }
 
-  const confirmed = confirm(`¿Está seguro que desea eliminar la especialidad ${name}?`);
+  const confirmed = confirm(`¿Está seguro que desea eliminar la especialidad ${especialidad.nombre}?`);
   if (!confirmed) return;
 
-  // No tenemos que eliminar sino que damos la baja lógica, cambiando el estado de la especialidad a inactiva
-  badge.classList.remove("badge-active");
-  badge.classList.add("badge-inactive");
-  badge.textContent = "Inactiva";
+  // Baja lógica: no se borra del array, se cambia el estado a inactivo y se guarda
+  especialidad.estado = "inactivo";
+  guardarEspecialidades(especialidades);
+  renderizarEspecialidades();
 }
