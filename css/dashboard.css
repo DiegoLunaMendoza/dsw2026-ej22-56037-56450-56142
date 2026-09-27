@@ -214,6 +214,7 @@
     border: 2px solid #17375e;
     width: 70%;
     font-size: 18px;
+    text-decoration: none;
 }
 
 #add-doctor:hover {
@@ -234,6 +235,7 @@
     transition: 200ms;
     width: 70%;
     font-size: 18px;
+    text-decoration: none;
 }
 
 #add-speciality:hover {
@@ -328,6 +330,7 @@
 
 #table-section .table-header h2{
     color: #0e2542;
+    font-size: 20px;
 }
 
 #table-section{
@@ -411,6 +414,9 @@
     color: #635903;
 }
 
+.tr-doctors td{
+    font-size: 13px;
+}
 
 /* ESCRITORIO */
 
@@ -475,7 +481,7 @@
     }
 
     .card-status {
-        width: 300px;
+        width: 100%;
     }
 
 
