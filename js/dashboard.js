@@ -21,4 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   menuButton.addEventListener('click', toggleMenu);
   backdrop.addEventListener('click', toggleMenu);
+
+  const especialidades = obtenerEspecialidades();
+  document.getElementById("number-active-specialities").textContent = especialidades.length;
 });
