@@ -41,7 +41,7 @@
     z-index: 2;
     overflow: hidden;
     border-right: 1px solid #999fa6;
-    padding: 30px 15px;
+    padding: 30px 15px 10px 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
