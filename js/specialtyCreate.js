@@ -53,33 +53,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputNombre.addEventListener("input", () => mostrarError(""));
 
-    form.addEventListener("submit", (e) => {
+       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!validarNombre()) {
             inputNombre.focus();
             return;
         }
+
+        const especialidad = {
+            nombre: inputNombre.value.trim(),
+            descripcion: descripcion.value.trim(),
+            estado: document.getElementById("estado").value,
+        };
+
+        agregarEspecialidad(especialidad);
+
         mostrarToast("Nueva especialidad creada correctamente");
         form.reset();
         autoAjustar();
     });
-
-    const especialidad = {
-        nombre: inputNombre.value.trim(),
-        descripcion: document.getElementById("descripcion").value.trim(),
-        estado: document.getElementById("estado").value,
-    };
-
-
-    const toast = document.getElementById("toast");
-    let toastTimeout;
-    // aprenderlo mejor 
-    function mostrarToast(mensaje) {
-        toast.textContent = mensaje;
-        toast.classList.add("visible");
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toast.classList.remove("visible"), 2500);
-    }
 
     btnCancelar.addEventListener("click", () => {
         window.location.href = "specialties.html";
