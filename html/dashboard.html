@@ -7,6 +7,7 @@
   <title>Admin Portal</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/specialties.css">
   <script src="../js/dashboard.js"></script>
   <!-- Línea para cambiar el logo de la pestaña -->
   <link rel="icon" type="image/png" href="../icons/logotipo.svg">
@@ -95,22 +96,22 @@
       <h1 id="dashboard-title">Vista General de Gestión</h1>
       <p id="dashboard-description">Configure el personal médico y las especialidades del departamento.</p>
       <div class="buttons-add">
-        <button id="add-doctor">
+        <a href="" id="add-doctor">
           <svg class="icon-dashboard-button" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
             <path
               d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
           </svg>
           Agregar nuevo doctor
-        </button>
-        <button id="add-speciality">
+        </a>
+        <a href="specialtyCreate.html" id="add-speciality">
           <svg class="icon-dashboard-button" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 640 640"><!--!Font Awesome Free v7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
             <path
               d="M320 64C331.2 64 341.7 69.9 347.4 79.5L443.4 239.5C449.3 249.4 449.5 261.7 443.8 271.7C438.1 281.7 427.5 288 416 288L224 288C212.5 288 201.8 281.8 196.2 271.8C190.6 261.8 190.7 249.5 196.6 239.6L292.6 79.6C298.3 69.9 308.8 64 320 64zM192 336C253.9 336 304 386.1 304 448C304 509.9 253.9 560 192 560C130.1 560 80 509.9 80 448C80 386.1 130.1 336 192 336zM392 352L504 352C526.1 352 544 369.9 544 392L544 504C544 526.1 526.1 544 504 544L392 544C369.9 544 352 526.1 352 504L352 392C352 369.9 369.9 352 392 352z" />
           </svg>
           Agregar nueva especialidad
-        </button>
+        </a>
       </div>
       <div class="cards-container">
         <div class="card-status">
@@ -192,7 +193,7 @@
             </td>
             <td>Gastroenterologo</td>
             <td>
-              <div class="doctor-status-active">&bull; Activo</div>
+              <div class="badge badge-active">&bull; Activo</div>
             </td>
             <td></td>
          </tr>
@@ -205,7 +206,7 @@
             </td>
             <td>Ginecólogo</td>
             <td>
-              <div class="doctor-status-license">&bull; Licencia</div>
+              <div class="badge badge-inactive">&bull; Licencia</div>
             </td>
             <td></td>
          </tr>
