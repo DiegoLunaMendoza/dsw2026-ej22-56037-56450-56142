@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("specialities-body");
+  const searchInput = document.getElementById("search-specialty");
 
   // Al cargar la página, completamos la tabla desde localStorage
   renderizarEspecialidades();
@@ -20,11 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteSpeciality(row);
     }
   });
+
+  searchInput.addEventListener("input", () => {
+    const texto = searchInput.value.toLowerCase().trim();
+    const filtradas = obtenerEspecialidades().filter((e) => 
+      e.nombre.toLowerCase().trim().includes(texto)
+    );
+    renderizarEspecialidades(filtradas);
+  });
+
 });
 
 // Dibuja todas las filas de la tabla a partir del array guardado en localStorage
-function renderizarEspecialidades() {
-  const especialidades = obtenerEspecialidades();
+function renderizarEspecialidades(especialidades = obtenerEspecialidades()) {
   const tableBody = document.getElementById("specialities-body");
 
   tableBody.innerHTML = "";
@@ -64,8 +73,9 @@ function renderizarEspecialidades() {
     tableBody.appendChild(fila);
   });
 
-  // Actualizamos la tarjeta de total con la cantidad real
-  document.getElementById("total-especialidades").textContent = especialidades.length;
+  // Actualizamos la tarjeta de total con la cantidad real de especialidades activas
+  const activas = obtenerEspecialidades().filter((e) => e.estado === "activo");
+  document.getElementById("total-especialidades").textContent = activas.length;
 }
 
 function editSpeciality(row) {
@@ -93,3 +103,5 @@ function deleteSpeciality(row) {
 
   mostrarToast(`La especialidad ${especialidad.nombre} ha sido puesta inactiva correctamente`, "warning");
 }
+
+// busqueda de especialidades
