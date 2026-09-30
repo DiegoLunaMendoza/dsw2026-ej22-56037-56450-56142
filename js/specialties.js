@@ -1,8 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.getElementById("specialities-body");
+  const searchInput = document.getElementById("search-specialty");
 
   // Al cargar la página, completamos la tabla desde localStorage
   renderizarEspecialidades();
+
+  const mensaje = sessionStorage.getItem("toastPendiente");
+  if (mensaje) {
+    mostrarToast(mensaje);
+    sessionStorage.removeItem("toastPendiente");
+  }
 
   // Delegación de eventos: un solo listener para los botones de todas las filas,
   // incluso las que se crean dinámicamente
@@ -20,16 +27,32 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteSpeciality(row);
     }
   });
+
+  searchInput.addEventListener("input", () => {
+    const texto = searchInput.value.toLowerCase().trim();
+    const filtradas = obtenerEspecialidades().filter((e) => 
+      e.nombre.toLowerCase().trim().includes(texto)
+    );
+    renderizarEspecialidades(filtradas);
+  });
+
 });
 
 // Dibuja todas las filas de la tabla a partir del array guardado en localStorage
-function renderizarEspecialidades() {
-  const especialidades = obtenerEspecialidades();
+function renderizarEspecialidades(especialidades = obtenerEspecialidades()) {
   const tableBody = document.getElementById("specialities-body");
 
   tableBody.innerHTML = "";
 
-  especialidades.forEach((especialidad) => {
+  if(especialidades.length === 0){
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="4">No se encontraron especialidades</td>
+      </tr>
+    `;
+  }
+  else{
+    especialidades.forEach((especialidad) => {
     const activa = especialidad.estado === "activo";
     const icono = especialidad.icono || "briefcase-medical-solid-full.svg";
 
@@ -62,10 +85,15 @@ function renderizarEspecialidades() {
       </td>
     `;
     tableBody.appendChild(fila);
-  });
+    });
+  }
 
-  // Actualizamos la tarjeta de total con la cantidad real
-  document.getElementById("total-especialidades").textContent = especialidades.length;
+
+
+
+  // Actualizamos la tarjeta de total con la cantidad real de especialidades activas
+  const activas = obtenerEspecialidades().filter((e) => e.estado === "activo");
+  document.getElementById("total-especialidades").textContent = activas.length;
 }
 
 function editSpeciality(row) {
@@ -93,3 +121,5 @@ function deleteSpeciality(row) {
 
   mostrarToast(`La especialidad ${especialidad.nombre} ha sido puesta inactiva correctamente`, "warning");
 }
+
+// busqueda de especialidades
