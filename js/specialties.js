@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Al cargar la página, completamos la tabla desde localStorage
   renderizarEspecialidades();
 
+  const mensaje = sessionStorage.getItem("toastPendiente");
+  if (mensaje) {
+    mostrarToast(mensaje);
+    sessionStorage.removeItem("toastPendiente");
+  }
+
   // Delegación de eventos: un solo listener para los botones de todas las filas,
   // incluso las que se crean dinámicamente
   tableBody.addEventListener("click", (e) => {

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputNombre = document.getElementById("nombre");
     const errorNombre = document.getElementById("nombre-error");
     const btnCancelar = document.getElementById("btn-cancelar");
+    const params = new URLSearchParams(window.location.search);
+    const idEditar = params.get("id");
 
     function mostrarError(mensaje) {
         errorNombre.textContent = mensaje;
@@ -35,7 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     inputNombre.addEventListener("input", () => mostrarError(""));
 
-       form.addEventListener("submit", (e) => {
+        if (idEditar) {
+            const especialidad = obtenerEspecialidades().find((esp) => esp.id === Number(idEditar));
+
+            inputNombre.value = especialidad.nombre;
+            descripcion.value = especialidad.descripcion;
+            document.getElementById("estado").value = especialidad.estado;
+
+            document.querySelector(".title").textContent = "Editar Especialidad";
+
+            autoAjustar();
+        }
+
+        form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!validarNombre()) {
             inputNombre.focus();
@@ -48,11 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
             estado: document.getElementById("estado").value,
         };
 
-        agregarEspecialidad(especialidad);
-
-        mostrarToast("Nueva especialidad creada correctamente");
-        form.reset();
-        autoAjustar();
+        if(idEditar){
+            actualizarEspecialidad(Number(idEditar), especialidad);
+            sessionStorage.setItem("toastPendiente", "Especialidad actualizada correctamente");
+            window.location.href = "specialties.html";
+        }else{
+            agregarEspecialidad(especialidad);
+            mostrarToast("Nueva especialidad creada correctamente");
+            form.reset();
+            autoAjustar();
+        }
+       
     });
 
     btnCancelar.addEventListener("click", () => {

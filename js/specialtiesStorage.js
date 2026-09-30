@@ -61,3 +61,14 @@ function agregarEspecialidad(especialidad) {
   especialidades.push(especialidad);
   guardarEspecialidades(especialidades);
 }
+
+function actualizarEspecialidad(id, datos){
+  const especialidades = obtenerEspecialidades();
+  const especialidad = especialidades.find((e) => e.id === id);
+
+  especialidad.nombre = datos.nombre;
+  especialidad.descripcion = datos.descripcion;
+  especialidad.estado = datos.estado;
+
+  guardarEspecialidades(especialidades);
+}
