@@ -38,7 +38,15 @@ function renderizarEspecialidades(especialidades = obtenerEspecialidades()) {
 
   tableBody.innerHTML = "";
 
-  especialidades.forEach((especialidad) => {
+  if(especialidades.length === 0){
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="4">No se encontraron especialidades</td>
+      </tr>
+    `;
+  }
+  else{
+    especialidades.forEach((especialidad) => {
     const activa = especialidad.estado === "activo";
     const icono = especialidad.icono || "briefcase-medical-solid-full.svg";
 
@@ -71,7 +79,11 @@ function renderizarEspecialidades(especialidades = obtenerEspecialidades()) {
       </td>
     `;
     tableBody.appendChild(fila);
-  });
+    });
+  }
+
+
+
 
   // Actualizamos la tarjeta de total con la cantidad real de especialidades activas
   const activas = obtenerEspecialidades().filter((e) => e.estado === "activo");
