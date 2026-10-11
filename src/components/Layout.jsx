@@ -1,17 +1,32 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import Toast from "./Toast.jsx";
 import "./Layout.css";
- 
+
 export default function Layout() {
   // true = menú abierto (solo se nota en mobile)
   const [menuOpen, setMenuOpen] = useState(false);
- 
+
   // URL actual, para marcar el ítem activo del menú
   const { pathname } = useLocation();
   const activeClass = (path) => (pathname.startsWith(path) ? "li-active" : "");
- 
+
   const navigate = useNavigate();
- 
+
+  // Estado del toast: qué mensaje, de qué color y si se ve
+  const [toast, setToast] = useState({ mensaje: "", tipo: "success", visible: false });
+  const timeoutRef = useRef(null);
+
+  // tipo: "success" (verde) o "warning" (ámbar)
+  function showToast(mensaje, tipo = "success") {
+    setToast({ mensaje, tipo, visible: true });
+
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setToast((anterior) => ({ ...anterior, visible: false }));
+    }, 2500);
+  }
+
   return (
     <div className="dashboard-container">
       <aside id="sidebar" className={menuOpen ? "open" : ""}>
@@ -77,23 +92,24 @@ export default function Layout() {
           </button>
         </div>
       </aside>
- 
+
       <div
         id="backdrop"
         className={menuOpen ? "backdrop visible" : "backdrop"}
         onClick={() => setMenuOpen(false)}
       ></div>
- 
+
       <header id="principal-header">
         <button type="button" className="menu" onClick={() => setMenuOpen(!menuOpen)}>
           &#9776;
         </button>
       </header>
- 
+
       <main>
-        <Outlet />
+        <Outlet context={{ showToast }} />
       </main>
+
+      <Toast mensaje={toast.mensaje} tipo={toast.tipo} visible={toast.visible} />
     </div>
   );
 }
-
