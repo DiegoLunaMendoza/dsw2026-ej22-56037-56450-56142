@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Layout.css";
 
 export default function Layout() {
+  // true = menú abierto (solo se nota en mobile)
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="dashboard-container">
-      <aside id="sidebar">
+      <aside id="sidebar" className={menuOpen ? "open" : ""}>
         <div className="aside-top">
           <h2>Admin Portal</h2>
           <p>Healthcare Management</p>
@@ -68,10 +72,16 @@ export default function Layout() {
         </div>
       </aside>
 
-      <div id="backdrop" className="backdrop"></div>
+      <div
+        id="backdrop"
+        className={menuOpen ? "backdrop visible" : "backdrop"}
+        onClick={() => setMenuOpen(false)}
+      ></div>
 
       <header id="principal-header">
-        <button type="button" className="menu">&#9776;</button>
+        <button type="button" className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+          &#9776;
+        </button>
       </header>
 
       <main>
