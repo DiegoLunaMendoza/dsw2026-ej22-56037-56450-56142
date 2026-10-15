@@ -1,0 +1,115 @@
+import { useRef, useState } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import Toast from "./Toast.jsx";
+import "./Layout.css";
+
+export default function Layout() {
+  // true = menú abierto (solo se nota en mobile)
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // URL actual, para marcar el ítem activo del menú
+  const { pathname } = useLocation();
+  const activeClass = (path) => (pathname.startsWith(path) ? "li-active" : "");
+
+  const navigate = useNavigate();
+
+  // Estado del toast: qué mensaje, de qué color y si se ve
+  const [toast, setToast] = useState({ mensaje: "", tipo: "success", visible: false });
+  const timeoutRef = useRef(null);
+
+  // tipo: "success" (verde) o "warning" (ámbar)
+  function showToast(mensaje, tipo = "success") {
+    setToast({ mensaje, tipo, visible: true });
+
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setToast((anterior) => ({ ...anterior, visible: false }));
+    }, 2500);
+  }
+
+  return (
+    <div className="dashboard-container">
+      <aside id="sidebar" className={menuOpen ? "open" : ""}>
+        <div className="aside-top">
+          <h2>Admin Portal</h2>
+          <p>Healthcare Management</p>
+          <nav>
+            <ul>
+              <li className={activeClass("/dashboard")}>
+                <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+                  <svg className="icon-aside-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M60 0H180A60 60 0 0 1 240 60V220A60 60 0 0 1 180 280H60A60 60 0 0 1 0 220V60A60 60 0 0 1 60 0ZM60 40A20 20 0 0 0 40 60V220A20 20 0 0 0 60 240H180A20 20 0 0 0 200 220V60A20 20 0 0 0 180 40ZM332 0H452A60 60 0 0 1 512 60V140A60 60 0 0 1 452 200H332A60 60 0 0 1 272 140V60A60 60 0 0 1 332 0ZM332 40A20 20 0 0 0 312 60V140A20 20 0 0 0 332 160H452A20 20 0 0 0 472 140V60A20 20 0 0 0 452 40ZM60 312H180A60 60 0 0 1 240 372V452A60 60 0 0 1 180 512H60A60 60 0 0 1 0 452V372A60 60 0 0 1 60 312ZM60 352A20 20 0 0 0 40 372V452A20 20 0 0 0 60 472H180A20 20 0 0 0 200 452V372A20 20 0 0 0 180 352ZM332 232H452A60 60 0 0 1 512 292V452A60 60 0 0 1 452 512H332A60 60 0 0 1 272 452V292A60 60 0 0 1 332 232ZM332 272A20 20 0 0 0 312 292V452A20 20 0 0 0 332 472H452A20 20 0 0 0 472 452V292A20 20 0 0 0 452 272Z" />
+                  </svg>
+                  Panel
+                </Link>
+              </li>
+              <li className={activeClass("/doctors")}>
+                <Link to="/doctors" onClick={() => setMenuOpen(false)}>
+                  <svg className="icon-aside-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM288 280C288 271.2 295.2 264 304 264L336 264C344.8 264 352 271.2 352 280L352 320L392 320C400.8 320 408 327.2 408 336L408 368C408 376.8 400.8 384 392 384L352 384L352 424C352 432.8 344.8 440 336 440L304 440C295.2 440 288 432.8 288 424L288 384L248 384C239.2 384 232 376.8 232 368L232 336C232 327.2 239.2 320 248 320L288 320L288 280z" />
+                  </svg>
+                  Doctores
+                </Link>
+              </li>
+              <li className={activeClass("/specialties")}>
+                <Link to="/specialties" onClick={() => setMenuOpen(false)}>
+                  <svg className="icon-aside-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path d="M320 64C331.2 64 341.7 69.9 347.4 79.5L443.4 239.5C449.3 249.4 449.5 261.7 443.8 271.7C438.1 281.7 427.5 288 416 288L224 288C212.5 288 201.8 281.8 196.2 271.8C190.6 261.8 190.7 249.5 196.6 239.6L292.6 79.6C298.3 69.9 308.8 64 320 64zM192 336C253.9 336 304 386.1 304 448C304 509.9 253.9 560 192 560C130.1 560 80 509.9 80 448C80 386.1 130.1 336 192 336zM392 352L504 352C526.1 352 544 369.9 544 392L544 504C544 526.1 526.1 544 504 544L392 544C369.9 544 352 526.1 352 504L352 392C352 369.9 369.9 352 392 352z" />
+                  </svg>
+                  Especialidades
+                </Link>
+              </li>
+              <li className={activeClass("/patients")}>
+                <Link to="/patients" onClick={() => setMenuOpen(false)}>
+                  <svg className="icon-aside-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M213 48A85 85 0 1 1 213 218A85 85 0 1 1 213 48ZM130 265H278C286 265 292 272 286 279C236 330 236 400 280 446C286 452 282 458 274 458H80C66 458 55 447 55 433V340C55 298 88 265 130 265ZM372 277A90 90 0 1 1 372 457A90 90 0 1 1 372 277ZM372 313A54 54 0 1 0 372 421A54 54 0 1 0 372 313ZM437.7 407.3L480.7 450.3A18 18 0 0 1 455.3 475.7L412.3 432.7A18 18 0 0 1 437.7 407.3Z" />
+                  </svg>
+                  Búsqueda de Pacientes
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div className="aside-bottom">
+          <button type="button" id="config">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path d="M259.1 73.5C262.1 58.7 275.2 48 290.4 48L350.2 48C365.4 48 378.5 58.7 381.5 73.5L396 143.5C410.1 149.5 423.3 157.2 435.3 166.3L503.1 143.8C517.5 139 533.3 145 540.9 158.2L570.8 210C578.4 223.2 575.7 239.8 564.3 249.9L511 297.3C511.9 304.7 512.3 312.3 512.3 320C512.3 327.7 511.8 335.3 511 342.7L564.4 390.2C575.8 400.3 578.4 417 570.9 430.1L541 481.9C533.4 495 517.6 501.1 503.2 496.3L435.4 473.8C423.3 482.9 410.1 490.5 396.1 496.6L381.7 566.5C378.6 581.4 365.5 592 350.4 592L290.6 592C275.4 592 262.3 581.3 259.3 566.5L244.9 496.6C230.8 490.6 217.7 482.9 205.6 473.8L137.5 496.3C123.1 501.1 107.3 495.1 99.7 481.9L69.8 430.1C62.2 416.9 64.9 400.3 76.3 390.2L129.7 342.7C128.8 335.3 128.4 327.7 128.4 320C128.4 312.3 128.9 304.7 129.7 297.3L76.3 249.8C64.9 239.7 62.3 223 69.8 209.9L99.7 158.1C107.3 144.9 123.1 138.9 137.5 143.7L205.3 166.2C217.4 157.1 230.6 149.5 244.6 143.4L259.1 73.5zM320.3 400C364.5 399.8 400.2 363.9 400 319.7C399.8 275.5 363.9 239.8 319.7 240C275.5 240.2 239.8 276.1 240 320.3C240.2 364.5 276.1 400.2 320.3 400z" />
+            </svg>
+            Configuración
+          </button>
+          <button type="button" id="logout" onClick={() => navigate("/login")}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <path d="M569 337C578.4 327.6 578.4 312.4 569 303.1L425 159C418.1 152.1 407.8 150.1 398.8 153.8C389.8 157.5 384 166.3 384 176L384 256L272 256C245.5 256 224 277.5 224 304L224 336C224 362.5 245.5 384 272 384L384 384L384 464C384 473.7 389.8 482.5 398.8 486.2C407.8 489.9 418.1 487.9 425 481L569 337zM224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L160 96C107 96 64 139 64 192L64 448C64 501 107 544 160 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480C142.3 480 128 465.7 128 448L128 192C128 174.3 142.3 160 160 160L224 160z" />
+            </svg>
+            Cerrar Sesión
+          </button>
+          <button type="button" id="profile">
+            <img src="/img/Javier-Milei-Perfil-TW.jpeg" alt="" id="profile-pic" />
+            <div>
+              <p id="profile-name">Javier Milei</p>
+              <p id="profile-role">Administrador Jefe</p>
+            </div>
+          </button>
+        </div>
+      </aside>
+
+      <div
+        id="backdrop"
+        className={menuOpen ? "backdrop visible" : "backdrop"}
+        onClick={() => setMenuOpen(false)}
+      ></div>
+
+      <header id="principal-header">
+        <button type="button" className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+          &#9776;
+        </button>
+      </header>
+
+      <main>
+        <Outlet context={{ showToast }} />
+      </main>
+
+      <Toast mensaje={toast.mensaje} tipo={toast.tipo} visible={toast.visible} />
+    </div>
+  );
+}
