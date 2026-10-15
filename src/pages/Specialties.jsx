@@ -7,7 +7,7 @@ export default function Specialties() {
     <>
       <h1>Directorio de Especialidades</h1>
 
-      {/* Botones de prueba: se borran cuando armemos la página real */}
+      {/* Botones de prueba:*/}
       <button type="button" onClick={() => showToast("Especialidad guardada")}>
         Probar toast verde
       </button>
